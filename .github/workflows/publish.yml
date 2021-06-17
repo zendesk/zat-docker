@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: zendesk/checkout@v2
 
       - name: Run tests
         run: |
@@ -44,7 +44,7 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: zendesk/checkout@v2
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
@@ -57,7 +57,7 @@ jobs:
       # Login to GitHub Container registry #
       ######################################
       - name: Log in to GitHub Docker Registry
-        uses: docker/login-action@v1
+        uses: zendesk/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
