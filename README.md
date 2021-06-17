@@ -1,4 +1,9 @@
-# ZAT Docker
+<h1 align="center" size="+3">
+  ⚡️ZAT - Docker
+    <br />
+  <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg">
+</h1>
+
 
 <br />
 
@@ -8,7 +13,7 @@ Docker image for [ZAT](https://developer.zendesk.com/documentation/apps/app-deve
 
 <br />
 
-### 💫 Prerequisities
+## 💫 Prerequisities
 
 In order to run this container you'll need docker installed.
 
