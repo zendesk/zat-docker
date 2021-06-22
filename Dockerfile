@@ -1,12 +1,12 @@
 FROM ubuntu:14.04
 
 RUN apt-get update -y -qq && \
-	apt-get install -y -qq git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
+	apt-get install -y -qq git-core curl zlib1g-dev build-essential libcurl4-openssl-dev libreadline-dev
 
 
 RUN cd && \
 	git clone --depth 1 git://github.com/sstephenson/rbenv.git .rbenv && \
- 	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
 	echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
 	exec $SHELL && \
 	git clone --depth 1 git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build && \
@@ -15,7 +15,7 @@ RUN cd && \
 
 ENV PATH $HOME/.rbenv/plugins/ruby-build/bin:$PATH
 RUN	/root/.rbenv/bin/rbenv install 2.6.3  && \
- 	/root/.rbenv/bin/rbenv global 2.6.3
+	/root/.rbenv/bin/rbenv global 2.6.3
 
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
@@ -28,6 +28,6 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - && \
-	 apt-get install -y nodejs --force-yes
+	apt-get install -y nodejs --force-yes
 EXPOSE 4567	 
 WORKDIR /data
